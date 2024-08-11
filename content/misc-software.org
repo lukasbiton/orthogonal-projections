@@ -1,0 +1,13 @@
+#+title: Miscelleanious software
+#+author: LB
+
+[[./index.org][Return to index]]
+
+| Tool name      | Link | In short                                          |
+| zoxide         | [[https://github.com/ajeetdsouza/zoxide][here]] | cd with frecency magic                            |
+| cherry blossom | [[https://github.com/junegunn/fzf][here]] | A fuzzy finder for the terminal                   |
+| magit          | [[https://magit.vc/][here]] | A git wrapper (porcelain) for Emacs               |
+| powerlevel10k  | [[https://github.com/romkatv/powerlevel10k][here]] | The first terminal theme I used (low maintenance) |
+| oh-my-posh     | [[https://ohmyposh.dev/][here]] | A popular terminal theme                          |
+| starship       | [[https://starship.rs/][here]] | Another popular terminal theme                    |
+

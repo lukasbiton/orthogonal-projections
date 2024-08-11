@@ -1,0 +1,59 @@
+#+title: My emacs config
+#+author: LB
+
+[[./index.org][Return to index]]
+
+* Speedrun
+
+If you only care about my init.el file, [[https://github.com/lukasbiton/emacs-config/blob/main/init.el][here]] you go.
+
+I like emacs and use it mostly as a code editor. I configured some simple language server protocols for Python and C++, added some fuzzy matching, and I made it a bit prettier.
+
+* The long version
+
+** Emacs isn't a text editor
+The joke is as old as emacs: it's great software, if only it had a good text editor. For my use-cases so far, emacs is an easily hackable, programming-first, keyboard-first, desktop replacement. I can drop in my init.el file and get started on a new machine right away.
+I keep the personalised keybindings to a minimum to make sure I can also use any version of emacs. Instead I focus on lightly customising other aspects like search and a variety of modes.
+
+Like in vim/neovim, the keyboard-first workflow is especially nice when you spend a lot of your time staring at text files and having to jump around in folder structures.
+
+** What I need emacs for
+
+In general, I would describe my workflow as basic: generic coding tasks, like writing source code, editing config files, whether they be .csv, .lua, .yaml, or .toml. Sometimes I'll use eww, emacs' web browser to check documentation that I already know and just need to consult without switching environments. I also use it to write this website!
+
+** Why I like emacs
+
+I like emacs for several reasons:
++ I like tinkering with the sotfware I use, and emacs is endlessly hackable. There's something nice about making software your own.
++ It allows me to keep a consistent workflow across machines and OSes. Like I said earlier, on most machines I can install emacs, download my init.el and get going with minimal friction.
++ Especially on Linux, it feels very fast.
++ It's amazing that we still have truly free software, and if we don't use it (and support it) we'll lose it.
++ Bragging that I use emacs.
+
+** Why emacs over vi/vim/neovim?
+
+One of my family members has been a professional software engineer and overall computer nerd for several decades more than me. I was telling them about my first software engineering job and complaining that my editor of choice, Atom, was being sunsetted. They laughed and said if I wanted to be taken seriously I should use a real text editor. I asked about vim and emacs and they said "emacs obviously."
+So there you have it, this is how new emacs converts are created: family pressure.
+Several years later I was showing them my emacs config and they tried using vim keybindings. They again laughed and said if I wanted to be taken seriously I should use vim.
+
+** How I learned emacs
+
+After that family member recommend I learn to use emacs, I asked how to learn since it looked daunting. They said that you really needed to have someone to show you the ropes.
+Undeterred, and without much help, I started with the built-in tutorial, watched videos on youtube (special mention to [[https://www.youtube.com/@SystemCrafters][System Crafters]]), read a book ([[https://www.masteringemacs.org/][Mastering Emacs]]), and struggled my way there.
+The way I approached it was to learn the movement keys first (C-n, C-p, C-f, C-b), and then progressively add commands. If I found myself using M-x to search for a command often, I would add a keybinding for it. After the first few months, I didn't need to use the mouse anymore, but I still learn new keybindings almost every week.
+
+** Some of my favorite features
+In no particular order, some of my favorite things:
++ Magit
++ Rectangle selection (especially for quickly editing .csv in csv-mode files)
++ Playing with colors
++ Easy to jump around code between dired and the text editor
++ The buffer system and organising your screen
++ Saving a nice macro and watching the magic happen
+
+* Things I want to learn about more in emacs
++ Org mode, including org calendar
++ Emails, but it looks more trouble than it's worth
++ Getting better at elisp
+
+  

@@ -1,0 +1,17 @@
+#+title: Orthogonal Projections
+
+* What this blog is about
+
+This blog is a place for me to share some thoughts with the rest of the world. My interests are mostly in mathematics, programming, and design.
+If you're curious about me, look [[./about.org][here]].
+
+* Orthogonal Projections
+
+In my third year of university, I took a graduate-level Econometrics course where I was presented for the first time with the idea that a linear regression could be interpreted geometrically as an orthogonal projection onto a plane. That was a real a-ha moment for me, which I credit as one of the events that shaped my mathematical interests for years to come.
+
+* Articles
+
++ [[./emacs-config.org][My personal emacs config]]
++ [[./book-list.org][My book list]]
++ [[./misc-software.org][Some software tools I like]]
++ [[./forecasting-guide.org][Forecasting Guide]]

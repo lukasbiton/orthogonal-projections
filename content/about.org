@@ -1,0 +1,16 @@
+#+title: About
+#+author: LB
+
+[[./index.org][Return to index]]
+
+Hi there, \\
+I have a background in mathematics and economics and I currently work as a data scientist. In the past, I've been a business analyst, a data consultant, and a hedge fund quant researcher. Nowadays my title is senior data scientist.
+Insofar as titles are meaningless, what I actually care about is working on interesting maths problems. I liked the idea of research in academia (getting paid to sit around and think about things sounds great) but the realities of running after funding, publish or perish, and high ego environments deterred me, which is how I ended up looking for applied research roles in industry.
+
+Some hard problems I've worked on:
++ Convincing upper management to use one solution over another
++ Building a stock-picking backtesting engine from scratch
++ Trying to predict prices in a variety of markets
++ Trying to optimise arbitrage trading strategies with linear programming
+
+If you want to get in touch, use: orthogonal.projections@proton.me

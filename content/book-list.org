@@ -1,0 +1,130 @@
+#+title: Book list
+#+author: LB
+
+This is a non-exhaustive and mostly unordered list of books and other courses I have read/taken and some general thoughts about them.
+
+[[./index.org][Return to index]]
+
+
+** Books and Courses
+
+| Title                                                                    | Author(s)                       | Finished        | Link     |
+| _Introduction to Statistical Learning_                                   | James et al.                    | Read            | [[https://hastie.su.domains/ISLP/ISLP_website.pdf.download.html][python]] [[https://hastie.su.domains/ISLR2/ISLRv2_corrected_June_2023.pdf.download.html][R]] |
+| _Elements of Statistical Learning_                                       | Hastie et al.                   | Read            | [[https://hastie.su.domains/Papers/ESLII.pdf][here]]     |
+| _Bayesian Data Analasis_, 3rd Edition                                    | Gelman et al.                   | 200 pages in    | [[http://www.stat.columbia.edu/~gelman/book/][here]]     |
+| _Advances in Financial Machine Learning_                                 | Marco Lopez de Prado            | skimmed through | [[https://agorism.dev/book/finance/ml/Marcos%20Lopez%20de%20Prado%20-%20Advances%20in%20Financial%20Machine%20Learning-Wiley%20%282018%29.pdf][here]]     |
+| _Machine Learning for Asset Managers_                                    | Marco Lopez de Prado            | Read            | [[https://www.cambridge.org/core/books/machine-learning-for-asset-managers/6D9211305EA2E425D33A9F38D0AE3545][here]]     |
+| _Testing and Tuning Market Trading Systems_                              | Timothy Masters                 | Read            | [[http://www.timothymasters.info/market-trading.html][here]]     |
+| _The Simple And Infinite Joy Of Mathematical Statistics_                 | J.N. Corcoran                   | Read            | [[https://www.awesomebooks.com/book/9798516859762/the-simple-and-infinite-joy-of-mathematical-statistics][here]]     |
+| _Automate the boring stuff with Python_                                  | Al Sweigart                     | Read            | [[https://automatetheboringstuff.com/][here]]     |
+| _Learn Python 3 the hard way_                                            | Zed                             | Read            | [[https://learncodethehardway.com/client/#/product/learn-python-the-hard-way-5e-2023/][here]]     |
+| _Python Crash Course_                                                    | Eric Matthes                    | Read            | [[https://ehmatthes.github.io/pcc/][here]]     |
+| Python for Data Science and Machine Learning                             | Jose Portilla                   | Completed       | [[https://www.udemy.com/course/python-for-data-science-and-machine-learning-bootcamp/?couponCode=2021PM20][here]]     |
+| Coursera: C for everyone                                                 | Ira Pohl                        | Completed       | [[https://www.coursera.org/learn/c-for-everyone][here]]     |
+| _Effective C_                                                            | Robert C. Seacord               | On List         | [[https://nostarch.com/Effective_C][here]]     |
+| Pikuma: C++ Game Engine Programming                                      | Gustavo Pezzi                   | Completed       | [[https://pikuma.com/courses/cpp-2d-game-engine-development][here]]     |
+| Pikuma: 3D Computer Graphics Programming                                 | Gustavo Pezzi                   | On list         | [[https://pikuma.com/courses/learn-3d-computer-graphics-programming][here]]     |
+| Pikuma: 2D Game Physics Programming                                      | Gustavo Pezzi                   | On list         | [[https://pikuma.com/courses/game-physics-engine-programming][here]]     |
+| Leetcode                                                                 | N/A                             | N/A             | [[https://leetcode.com/][here]]     |
+| _Game Programming Patterns_                                              | Robert Nystrom                  | 100 pages in    | [[https://gameprogrammingpatterns.com/][here]]     |
+| Computer Enhance                                                         | Casey Muratory                  | On list         | [[https://www.computerenhance.com/][here]]     |
+| Coursera: Supervised Machine Learning: Regression and Classification     | Andrew Ng                       | Completed       | [[https://www.coursera.org/learn/machine-learning][here]]     |
+| _Operating Systems: Three Easy Pieces_                                   | Arpaci-Dusseau & Arpaci-Dusseau | On List         | [[https://pages.cs.wisc.edu/~remzi/OSTEP/][here]]     |
+| _Engineering a Compiler_                                                 | Cooper & Torczon                | On List         | [[https://shop.elsevier.com/books/engineering-a-compiler/cooper/978-0-12-815412-0][here]]     |
+| _Structure and Interpretation of Computer Programs_ (SICP) (Wizard Book) | Abelson, Sussman, & Sussman     | On List         | [[https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html][here]]     |
+| _Programming: Principles and Practice using C++_                         | Stroustrup                      | 150 pages in    | [[https://www.informit.com/store/programming-principles-and-practice-using-c-plus-plus-9780138308681][here]]     |
+| _Machine Learning with PyTorch and Scikit-Learn_                         | Raschka et al.                  | 200 pages in    | [[https://www.packtpub.com/en-us/product/machine-learning-with-pytorch-and-scikit-learn-9781801819312][here]]     |
+| _Forecasting: Principles and Practice_                                   | Hyndman and Athanasopoulos      | On List         | [[https://otexts.com/fpp3/][here]]     |
+| _Data-driven science and engineering_                                    | Brunton and Kutz                | On List         | [[https://databookuw.com/][here]]     |
+| _Statistical Inference_                                                  | Casella and Berger              | 200 pages in    | [[https://mybiostats.wordpress.com/wp-content/uploads/2015/03/casella-berger.pdf][here]]     |
+| _Computer Age Statistical Inference_                                     | Efron and Hastie                | On List         | [[https://hastie.su.domains/CASI_files/PDF/casi.pdf][here]]     |
+| _Causal Inference for the Brave and the True_                            | Facure                          | Mostly read     | [[https://matheusfacure.github.io/python-causality-handbook/landing-page.html][here]]     |
+| _Minimize Regret_                                                        | Tim Radtke                      | Skimmed through | [[https://minimizeregret.com/][here]]     |
+| The Missing Semester of Your CS Education                                | Various                         | Completed       | [[https://missing.csail.mit.edu/][here]]     |
+| _Probabilistic Machine Learning_                                         | Murphy                          | On List         | [[https://probml.github.io/pml-book/book1.html][here]]     |
+| _Econometrics_                                                           | Hayashi                         | On List         | [[https://press.princeton.edu/books/hardcover/9780691010182/econometrics][here]]     |
+| _Mastering 'Metrics_                                                     | Angrist and Pischke             | Read            | [[https://www.masteringmetrics.com/][here]]     |
+
+
+** Thoughts
+
+If a book or course doesn't have a section, it's because I have nothing to say about it for now (usually because I haven't started/finished it yet).
+
+*** _Introduction to Statistical Learning_ (ISL)
+
+An excellent introduction to data science with lots of practical example. Suitable for data analysts and business analysts, or non-techincal people who want to see what happens under the hood a bit.
+
+*** _Elements of Statistical Learning_ (ESL)
+
+If you want more solid statistical foundations for what you learned in ISL, this is the book. If you master what's in there, you can become a really solid data scientist in industry.
+
+*** _Bayesian Data Analysis_
+
+Considered to be the core book of modern Bayesian methods, by the authors of the Stan computing package.
+I haven't finished it yet, but am thoroughly enjoying it. Most of my formal statistics training was in the frequentist/Fisherian fashion, and I knew very little beyond the basic definition of Bayes' rule.
+Here are some things I've enjoyed so far:
++ I find that I'm learning a lot by contrast to frequentist methods
++ I'm learning a different way of looking at distributions and uncertainty
++ I'm reframing a lot of what I think could be delivered in a business setting
+
+*** _Advances in Financial Machine Learning_
+
+This book has a lot of nice advanced topics that I didn't see mentionned anywhere else. Things like how to store your data, data transformations to get a present discounted value of your assets across wide asset classes, how to use information theory to derive useful trading signals, how to avoid data mining...
+It's presented so plainly and obviously that I felt almost dumb for not thinking of the content of the books by myself before.
+The code is written very plainly using mostly numpy and statsmodels, but in my (partial) experience works.
+
+*** _Machine Learning for Asset Managers_
+
+This book is a collection of papers, by the same author as _Advances in Financial Machine Learning_. I found this book approachable and helpful in expanding my repertoire of techniques, but in practice I was unsuccessful in applying a lot of the methods described there.
+Maybe this decries my lack of understanding, my lack of skill, or that I was in the wrong place to employ these techniques. Regardless, still a good read for being thought-provoking.
+
+*** _Testing and Tuning Market Trading Systems_
+
+At the time of writing, this book has a rating of 3.8 on Amazon, which is ludicrously low.
+As far as I know, this book has the best coverage of the dangers of in-sample bias. It has many examples that demonstrate what in-sample bias does to your forecasts, details methods (mostly advanced ways to train-test split your timeseries data) to avoid this bias, and discusses their trade-offs (especially in a financial context where the noise-to-signal ratio is poor).
+
+In industry, especially in a timeseries context, I've seen many people unsure of how to approach these problems in practice. As a result, most of what I've seen has been akin to putting a wet finger in the air to decide how to measure a model's forecasting efficacy.
+
+If you want to know whether you should have a train, validate, and test set; whether to retrain on your train and validate sets before running on test; or what to do with your testing errors, then this is the book for you.
+
+Note that the code is written in C++, but it is thoroughly explained and I could follow along even with my low understanding of C++. Moreover all the code is available on a public github repository.
+
+*** _The Simple And Infinite Joy Of Mathematical Statistics_
+
+This is a traditional statistics textbook, aimed at higher level undergraduates or graduates. I felt like my mathematics was getting rusty, and this book covered topics I hadn't covered, like building hypothesis tests from scratch regardless of the distribution. Moreover it is full to the brim with deeply detailed examples. I would have loved this textbook in my own stats classes.
+
+I found this book through the recommendation of the youtube channel [[https://www.youtube.com/@xvzf8147][xvzf]], and the author has all the lectures associated with the book (and more) uploaded [[https://www.youtube.com/watch?v=I0u1cecfXQ4&list=PLLyj1Zd4UWrPZH-fknPLak0tlUpUISBZR][here]] as well.
+I didn't do most of the exercises, instead opting to read this to stretch my brain. I might get back to it one day since I thoroughly enjoyed it, but for now I'm focused on more applied problems.
+
+*** _Automate the Boring Stuff with Python_, _Learn Python 3 The Hard Way_, _Python Crash Course_
+
+I'm grouping these three together because they're the three books that I used to first learn how to code. It took about 3 years of continuously finding the time after school or work, of doing all the exercises, of googling everything I didn't understand... These three books were less the foundation of my computer science knowledge, and more the jumpstart that gave me enough knowledge to start doing my own things. It was the first time I felt like I was actually using my computer.
+I don't know if this combination would work for anyone else, but it worked for me.
+
+*** Python for Data Science and Machine Learning
+
+This is the first online course I took in 2018. At the time of writing this, it was last updated in 2020. I don't know how well it held up, but when I took this course I was looking for practical exercises. Following the lesson from _Learn Python 3 the Hard Way_, I wanted to just code along until the logic of writing programs entered my brain.
+I can't stress this enough for anyone else like me who is learning from online resources: you have to code along and do the exercises. Choose a course where there will be lots of coding, lots of examples, and lots of practical exercises, and do as much of it as you can.
+
+*** Coursera: C for everyone
+
+After spending several years learning python, and having started to build large projects with it, I wanted to learn more about computer science. On the advice of several friends, I decided to learn a lower-level language.
+
+This turned out to be great advice: working at a lower level helped me understand so many things about not just programming, but for the first time computer science. You can get quite far writing programs even if you don't actually know what you're doing. Python is great that way. But I've found that my coding skills got exponentially better once I started really understanding what I was doing (unsurprisingly).
+
+*** _Programming: Principles and Practice using C++_
+
+This book is by Bjarne Stroustrup, the creator of the C++ language. After learning the basics of C, I figured I would have a look at C++. I didn't know what to expect how this book, besides that it is controversial (mostly for pushing forward bad practices like importing the entire standard library and not being "real industrial C++", whatever that means), but I was nicely surprised. One of the first big projects is to build a calculator that is then progressively udpated. This is nice, because it's basically akin to writing a simple compiler, a project I've been wanting to tackle to test my metle. Unfortunately I was working with the 2nd edition, and a lot of the provided code that is used for the graphics part of the book wouldn't compile, so I had to give up halfway through. Since the third edition came out, I've been meaning to give it another shot.
+
+*** Pikuma: C++ Game Engine Programming
+
+I was thoroughly impressed with how good this course was. If Udemy is junk food, Pikuma is a balanced, healthy, invigorating, 5 course meal. I learned about so much: CMake, linking and compiling, templates and generics, memory allocation and freeing memory, designing a game engine, composition VS inheritance, and many more.
+Moreover it perfectly fit the types of tutorials I love: from scratch, starting with an empty editor, and coding along in real time. Usually I can follow along leaving tutorials on double speed, but not with Pikuma, which tells you how dense the information was. It took several months of intense work to finish this course, and I'm very much looking forward to having the time to do other courses such as the 3D graphics one or the 2D physics one.
+
+*** Leetcode
+
+Leetcode-style exercises as a recruitment tool are quite awful, but as a resource to learn basic algorithms hands-on it is excellent. Your exercises are ordered by difficulty, you can do them in basically any language, they are quickly graded, and there is a wealth of solutions to look at if you're realyl stuck. Having to crunch Leetcode hours a day to find a job is really awful, but as an exercise book without your salary depending on it, it does its job really well.
+
+*** _Mastering 'Metrics_
+
+This was the main applied textbook used for the Econometrics class that I TA'ed for when I was doing my masters degree. I think it's fairly for the undergraduate level, although not sure well it's aged. A more advanced book, also by Angrist, [[https://www.mostlyharmlesseconometrics.com/][Mostly Harmless Econometrics]], is also quite reputable, although I've only skimmed it.
