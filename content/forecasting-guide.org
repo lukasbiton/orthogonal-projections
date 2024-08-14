@@ -4,9 +4,9 @@
 
 [[./index.org][Return to index]]
 
-* _Introduction_
+* Introduction
 
-** _What this guide is (and what it isn't)_
+** What this guide is (and what it isn't)
 
 I wrote this guide when I joined a team where few people had formal training in forecasting methods, but many people had PhDs in quantitative fields and so weren't afraid of a good-looking equation.
 As a result, this guide aims to start develop a solid mathematical basis on which to build data literacy and intuition as to how forecasting works on a solid mathematical basis.
@@ -65,7 +65,7 @@ Once we have a benchmark and we have some idea for a more complex mdoel, there a
 
 The most striking thing I learned about mathematics in highschool is that notations are everything. It's happened to me before to pick up a textbook or start a maths class and to not understand about the notation and have to google everything. Hopefully this section avoids you these pains.
 
-** _Matrix notation_
+** Matrix notation
 
 Scalars are like regular numbers, while vectors are collections of scalars. We say vectors are of shape \( n \times 1 \) where \( n \) is the number of scalars in the vector. Matrices are collections of vectors. We say a matrix has shape \( n \times k \) when it has \( n \) rows and \( k \) columns.
 
@@ -73,30 +73,30 @@ Typically, scalars are designated by a single lowercase letter, while vectors ar
 
 If you want to use words, tensors are the 3+ dimensional equivalent of matrices.
 
-** _Transpose notation_
+** Transpose notation
 
 The transpose of a vector or of a matrix is that same vector or matrix but flipped symmetrically along its diagonal. So a vector that is \( n \times 1 \) becomes \( 1 \times n \) and a matrix that is \( n \times k \) becomes  \(k \times n \). The notation for the transpose of matrix \( X\) is \( X' \) or sometimes \( X^T \). In this guide I use \( X' \) for legibility.
 
-** _Distribution notation_
+** Distribution notation
 
 To indicate that a random variable \( X \) follows a given distrbution \( \mathbb{F} \), the notation is: \( X \sim \mathbb{F} \).
 
-** _Matrix operations VS scalar operations_
+** Matrix operations VS scalar operations
 
 Multiplying two numbers together is easy, but to multiply two matrices or vectors, their sizes need to match up: if \( X\) is \( n \times k \) and \( \beta \) is \( k \times 1 \) then I can compute \( X \times \beta \) and the result is of size \( n \times 1 \), but I can't compute \( \beta \times X \). Note how squaring matrices works: \( X^2 \) can be either \( X'X \) or \( XX' \). You choose the one you want based on the dimensions you want and/or need for your result. Note that this means that squaring a vector can lead to a scalar or a square matrix.
 
-** _Hat, tilde, dot_
+** Hat, tilde, dot
 
 In a forecast, we typically estimate parameters. If the true parameter is written as \( \beta \) then the estimated parameter will be written with a hat: \( \hat{\beta} \). Some data transformations are written using a tilde above the variable that represents the data. Data transformations that involve differencing typically use dots instead of tildes, which is a convention that comes from the field of differential equations.
 + Hat: \( \hat{\beta} \)
 + Tilde: \( \tilde{x} = f(x) \) where f is some function
 + Dot: $\dot{x}_{t} = x_{t} - x_{t-1}$
   
-** _Derivatives_
+** Derivatives
 
 Usually, a derivativate is denoted using \( ' \), but to not create confusion with the transpose notation and to be more explicit on the number of times the derivate is taken, I use the notation \( X^{(n)} \) to indicate the \( n-th \) derivative.
 
-** _Population or sample data_
+** Population or sample data
 
 Throughout the guide, I talk about population data and sample data. The population is the entire data that can, while the sample data is the part of that total that I collected.
 
@@ -104,11 +104,11 @@ For instance, if I measure the height of everyone in a building, that is a sampl
 
 Consider a maybe less contrived example. In the stock market, we observe only one price for each time of the day for each asset. What is the population distribution for that data? Is it a distribution for each time? What if some times have no new prices? Is it a distribution for each day? Is it a distribution for each asset? It's unlikely that there is a true answer here, rather what matters is what we're trying to model.
 
-** _Expectation, variance, covariance_
+** Expectation, variance, covariance
 
 The operator \( \mathbb{E} \) is called the expectation, or expected value, and it is (usually) equivalent to the mean. The variance operator is most often written \( Var \), and the covariance operator \( Cov \).
 
-** _Conditional notation_
+** Conditional notation
 
 Sometimes, we want to express what we know about a random variable given some knowledge we already have, as opposed to without that knowledge. Consider the random variable \( Y \), and some information \( X \). We write formally that \( Y \) given \( X \) is \( Y | X \).
 

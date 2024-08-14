@@ -9,9 +9,14 @@ If you're curious about me, look [[./about.org][here]].
 
 In my third year of university, I took a graduate-level Econometrics course where I was presented for the first time with the idea that a linear regression could be interpreted geometrically as an orthogonal projection onto a plane. That was a real a-ha moment for me, which I credit as one of the events that shaped my mathematical interests for years to come.
 
+* Mailing list
+
+If you want to be put on a mailing list and receive my new articles directly in your inbox, say hi here: orthogonal.projections@proton.me.
+
 * Articles
 
 + [[./emacs-config.org][My personal emacs config]]
 + [[./book-list.org][My book list]]
 + [[./misc-software.org][Some software tools I like]]
 + [[./forecasting-guide.org][Forecasting Guide]]
++ [[./forecasting-guide-making-of.org][Forecasting Guide - making of]]

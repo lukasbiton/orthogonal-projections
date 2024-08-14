@@ -12,10 +12,10 @@ from sklearn.linear_model import QuantileRegressor
 def get_orthogonal_point(x, y, a, b):
 
     b_prime = y + x / a
-    x_prime = (b_prime - b) / (a + 1/a)
-    y_prime = a * x_prime + b
+    x_2 = (b_prime - b) / (a + 1/a)
+    y_2 = a * x_2 + b
 
-    return [x_prime, y_prime]
+    return [x_2, y_2]
 
 
 def test_ortho(func):

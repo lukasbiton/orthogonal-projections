@@ -1,0 +1,125 @@
+#+title: Forecasting guide - making of
+#+author: LB
+#+version: 1
+
+[[./index.org][Return to index]]
+
+If you've read my [[./forecasting-guide.org][forecasting guide]] and wonder how I made such beautiful graphs, then you're in the right place.
+
+* Speedrun
+
+See [[https://github.com/lukasbiton/orthogonal-projections/blob/main/content/forecasting_guide_plots.py][here]] for the code. Installing dependencies left to the reader's imagination.
+
+* Toy data
+
+The first difficulty was in generating fake data to plot. I had three requirements:
++ The plots have to look good
++ They have to exaggerate the points I'm trying to make so they're easy to read
++ They have to be mathematically correct
+
+In practice what that means is that specifically, when drawing all three lines of best fits, I wanted for the three lines to look quite different at first glance. \\
+My first attempt when writing the code was to define \( X \) as completely linear and \( y \) as a random noise around \( X \). This of course yields remarkably similar lines of best fit. \\
+I tried defining \( y \) as a quadratic or as an exponential of \( X \), but in the end the logarithm worked best. It created a data set with a slight curve which impacted classical OLS, ODR, and MAE-based linear regression differently, while not being an outrageously bad fit. \\
+
+Here is the code for generating simple logarithmic data:
+
+#+BEGIN_SRC <python>
+  import numpy as np
+
+  x = np.arange(bottom, top, 1)
+  sigma = 3
+  y = np.random.normal(18 * np.log(x + 1), sigma)
+#+END_SRC
+
+Generating the data for the timeseries transformations was slightly more involved:
+
+#+BEGIN_SRC <python>
+  import numpy as np
+
+  time = np.arange(0, 1000, 1)
+  x = np.array([1000])
+  y = np.array([1000])
+
+  for t in time:
+    to_append_x = x[t] + np.random.normal(0,1)
+    x = np.append(x, to_append_x)
+
+    to_append_y = 0.5 * x[t] + np.random.normal(0,0.3)
+    y = np.append(y, to_append_y)
+#+END_SRC
+
+The trick for this one was to make \( X \) and \( y \) related without making them the same. I tried several other options, like including a time trend inside \( y \) as well, but then dividing \( y \) by \( X \) results in an almost straight 45 degree line.
+
+* Drawing orthogonal lines
+
+Drawing orthogonal lines was probably the hardest part of this plotting effort. I had to remember highschool (middle school?) linear algebra and find the point on a line through the perpendicular to that line and through another point. \\
+If this exercise taught me one thing, it's that Google search is bad for asking simlpe algebra questions like that... \\
+
+For anyone else struggling on basic algebra, here is how you derive the formula.
+
+We start with: a given line \( y = a \times x + b \) and a given point \( (x_1, y_1 \) that isn't on the line. We are looking for the second point \( (x_2, y_2) \) such that the perpendicular to the line goes through both points. \\
+We start by looking for the equation of the perpendicular. \\
+For any straight line defined by \( y = a \times x + b \), its perpendicular has slope \( a^{\prime} = - \frac{1}{a} \). The trick is now to find \( b^{\prime} \) and express it only in terms of \( x, y, \text{or}, a \):
+
+\begin{alignat}{1}
+  & y^{\prime} = - \frac{1}{a} \times x^{\prime} + b^{\prime}\\
+  & \Leftrightarrow b^{\prime} = y^{\prime} + \frac{1}{a} \times x^{\prime}
+\end{alignat}
+
+And since \( (x_1, y_1 \) is on that line, we now have a value for \( b^{\prime} = y_1 + \frac{1}{a} \times x_1 \). \\
+
+We now look for \( (x_2, y_2) \).
+
+\begin{alignat}{1}
+  & \Leftrightarrow b^{\prime} = y^{\prime} + \frac{1}{a} \times x^{\prime}\\
+  & \Leftrightarrow b^{\prime} = y^{\prime} + \frac{1}{a} \times x^{\prime}\\
+  & \Leftrightarrow b^{\prime} = y_2 + \frac{1}{a} \times x_2\\
+  & \Leftrightarrow b^{\prime} = a \times x_2 + b + \frac{1}{a} \times x_2\\
+  & \Leftrightarrow b^{\prime} = \left( a + \frac{1}{a} \right) \times x_2 + b\\
+  & \Leftrightarrow b^{\prime} - b = \left( a + \frac{1}{a} \right) \times x_2\\
+  & \Leftrightarrow x_2 = \frac{b^{\prime} - b}{a + \frac{1}{a}}
+\end{alignat}
+
+And pluggin \( x_2 \) back into the any of the equations for \( y \):
+
+\begin{alignat}{1}
+  & \Leftrightarrow y_2 = a \times x_2 + b
+  & \Leftrightarrow y_2 = a \times \frac{b^{\prime} - b}{a + \frac{1}{a}} + b
+\end{alignat}
+
+In code, we can take a few notational shortcuts:
+
+#+BEGIN_SRC <python>
+def get_orthogonal_point(x, y, a, b):
+
+    b_prime = y + x / a
+    x_2 = (b_prime - b) / (a + 1/a)
+    y_2 = a * x_2 + b
+
+    return [x_2, y_2]
+#+END_SRC
+
+And finally, we can just draw a line between our original point and our orthogonal point. I loop through a few points (chosen for visual readability), for each point calculate the relevant orthogonal point, and draw a line:
+
+#+BEGIN_SRC <python>
+import matplotlib.pyplot as plt
+
+for point_id in points_to_plot:
+    point_1 = [x[point_id], y[point_id]]
+    point_2 = get_orthogonal_point(point_1[0], point_1[1], coeff, 0)
+    x_values = [point_1[0], point_2[0]]
+    y_values = [point_1[1], point_2[1]]
+    plt.plot(x_values, y_values, linestyle = "-", alpha = 0.7, color = 'r')
+#+END_SRC
+
+* Drawing parallel lines
+
+Drawing lines parallel to  is considerably easier. To find the intersection of the line of best fit and a line running parallel to the y-axis and through a given point \( (x, y) \), we just keep the same \( x \) value but find a new y-coordinate with the equation we have for the line of best fit. In practice, given each \( x \) we have two \( y \) values, one from the training data and one from the predictions. The pair of points to draw a line between is then \( (x, y) \) and \( (x, y_{pred}) \).
+
+* Drawing squares
+
+Drawing squares is straightforward: calculate the distance of the segment we found with the parallel line approach above. Since the \( x \) values are the same for that segment, we can just take the difference \( y - y_{pred} = \text{diff} \). Then the four points that make up our square are: \( (x, y), (x, y_{pred}), (x - \text{diff}, y_{pred}), (x - \text{diff}, y) \). The only tricky bit is that we need to give the first point "twice" so matplotlib knows to draw all four line segments (it makes sense, with 4 points in order it can only draw 3 lines).
+
+* Choosing a theme
+
+Matplotlib has a great style sheet reference, see [[https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html][here]]. I'm partial to dark themes in general.
