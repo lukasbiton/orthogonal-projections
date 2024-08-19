@@ -13,4 +13,4 @@ Some hard problems I've worked on:
 + Trying to predict prices in a variety of markets
 + Trying to optimise arbitrage trading strategies with linear programming
 
-If you want to get in touch, use: orthogonal.projections@proton.me
+If you want to get in touch, use: [[mailto:orthogonal.projections@proton.me][my email]].

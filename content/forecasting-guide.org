@@ -28,7 +28,7 @@ The dictionary definition of forecasting is to predict or estimate a future even
 
 Note how this is different from building a physical model. Forecasting relies on capturing the information that exists in your data (sometimes you will also see people talk about capturing the signal in your data). Although physical modeling and forecast modeling are very different, they are both called modeling because they are both ways to represent the world.
 
-*Note -- Physics-informed forecasts:* Although I just spent a whole paragraph telling you that phsyics modelling and forecast mdoelling are different, there is a way to use both together. In fact, a physical model can inform the structure of your forecasting model. [[https://www.eigensteve.com/][Steven Brunton]] has a nice [[https://www.youtube.com/channel/UCm5mt-A4w61lknZ9lCsZtBw][youtube channel]] I recommend on this topic (and also a [[https://databookuw.com/][book]] which has been on my reading list for over a year, but who's got time to read?)
+*Note -- Physics-informed forecasts:* Although I just spent a whole paragraph telling you that physics modeling and forecast modeling are different, there is a way to use both together. In fact, a physical model can inform the structure of your forecasting model. [[https://www.eigensteve.com/][Steven Brunton]] has a nice [[https://www.youtube.com/channel/UCm5mt-A4w61lknZ9lCsZtBw][youtube channel]] I recommend on this topic (and also a [[https://databookuw.com/][book]] which has been on my reading list for over a year, but who's got time to read?)
 
 It turns out there are many different problems we would like to forecast, and so there are many different forecasting methods. And adjacent to the forecasting methods, there are approaches to test for the validity of the forecasting methods. A full forecasting model is usually, a method (like linear regression), a testing framework (like cross-validation), along with some data (and associated feature engineering).
 
@@ -41,17 +41,17 @@ Fundamentally, forecasting methods rely on the assumption that there is a stocha
 First, you would perform Exploratory Data Analysis (EDA). Often, this means plotting your data and looking at simple metrics: min, max, mean, standard deviation, quantiles, correlation across variables, ... This allows you to start to guess at some of the rules that your data follows.
 Then, using domain expertise you would start to narrow down which kind of problem we are facing. What do we want out of our data? How much data do we have? How explainable do we need our solution to be? What's the measure of success for our forecasting model? The answers can change over time, and this is reflected in our choice of modeling approach.
 
-Generally, before building a complex model and once the questions we want to answer are clearer, we start by building a simple benchmark. This benchmark should be as simple as: using a mean; using the previous day's data; using a fixed prediction; a very barebones linear regression. Without such a benchmark, we don't even know what we are aiming to beat.
+Generally, before building a complex model and once the questions we want to answer are clearer, we start by building a simple benchmark. This benchmark should be as simple as: using a mean; using the previous day's data; using a fixed prediction; a very bare bones linear regression. Without such a benchmark, we don't even know what we are aiming to beat.
 
-Once we have a benchmark and we have some idea for a more complex mdoel, there are generally three avenues to augment that more complex model:
+Once we have a benchmark and we have some idea for a more complex model, there are generally three avenues to augment that more complex model:
 
 + Feature engineering:
 
-  That is, modify your data in some ways. This is usually driven by the results of your EDA and your domain expertise. For instance, if you know that markets behave in a certain way, you can modify your market data to reflect that. Modifications can be about removing outliers, scaling the data, generating interaction variables, or passing your data through a complex function. A variety of metrics from the world of information theory can help you assess if your transformed data is better for the forecasting task. Note that usually the number of possible transformations is much higher than what any computer can handle, so you need to exercise judgement when coming up with them.
+  That is, modify your data in some ways. This is usually driven by the results of your EDA and your domain expertise. For instance, if you know that markets behave in a certain way, you can modify your market data to reflect that. Modifications can be about removing outliers, scaling the data, generating interaction variables, or passing your data through a complex function. A variety of metrics from the world of information theory can help you assess if your transformed data is better for the forecasting task. Note that usually the number of possible transformations is much higher than what any computer can handle, so you need to exercise judgment when coming up with them.
   
 + Tune your model's parameters:
 
-  We will cover more examples of model parameters later, but this tuning is an essential step. Althought it depends strongly on your data, it is also very much about the specific model you are using.
+  We will cover more examples of model parameters later, but this tuning is an essential step. Although it depends strongly on your data, it is also very much about the specific model you are using.
 
 + Finally, try a different model:
 
@@ -59,11 +59,11 @@ Once we have a benchmark and we have some idea for a more complex mdoel, there a
 
 *Note -- What constitutes a model:* is it the base equation? Is it just the parameters? Is it the trained output of your code? Is it how you train and test the model? Is it your data? Most people nowadays agree that it is all of that, and so you should have a versioning system to make sure you know at all times which version of your data goes with which version of your model training approach.
 
-*Note -- Feature egineering:* Machine Learning will often perform drastic data transformations to build models with better out-of-sample performance. This data transformation is often called feature engineering, or feature extraction, or sometimes more specifically dimensionality reduction. Feature engineering can mean taking a continuous variable (e.g. age number) and making it into a categorical variable (e.g. age category like child, adult, ...) via heuristics, or it can mean using statistical methods to create the features. Econometrics however tends to be much more restrained with its data transformations, typically takings logs or first-differences only.
+*Note -- Feature engineering:* Machine Learning will often perform drastic data transformations to build models with better out-of-sample performance. This data transformation is often called feature engineering, or feature extraction, or sometimes more specifically dimensionality reduction. Feature engineering can mean taking a continuous variable (e.g. age number) and making it into a categorical variable (e.g. age category like child, adult, ...) via heuristics, or it can mean using statistical methods to create the features. Econometrics however tends to be much more restrained with its data transformations, typically takings logs or first-differences only.
 
 * Notations
 
-The most striking thing I learned about mathematics in highschool is that notations are everything. It's happened to me before to pick up a textbook or start a maths class and to not understand about the notation and have to google everything. Hopefully this section avoids you these pains.
+The most striking thing I learned about mathematics in high school is that notations are everything. It's happened to me before to pick up a textbook or start a maths class and to not understand about the notation and have to google everything. Hopefully this section avoids you these pains.
 
 ** Matrix notation
 
@@ -79,7 +79,7 @@ The transpose of a vector or of a matrix is that same vector or matrix but flipp
 
 ** Distribution notation
 
-To indicate that a random variable \( X \) follows a given distrbution \( \mathbb{F} \), the notation is: \( X \sim \mathbb{F} \).
+To indicate that a random variable \( X \) follows a given distribution \( \mathbb{F} \), the notation is: \( X \sim \mathbb{F} \).
 
 ** Matrix operations VS scalar operations
 
@@ -94,7 +94,7 @@ In a forecast, we typically estimate parameters. If the true parameter is writte
   
 ** Derivatives
 
-Usually, a derivativate is denoted using \( ' \), but to not create confusion with the transpose notation and to be more explicit on the number of times the derivate is taken, I use the notation \( X^{(n)} \) to indicate the \( n-th \) derivative.
+Usually, a derivativate is denoted using \( ' \), but to not create confusion with the transpose notation and to be more explicit on the number of times the derivative is taken, I use the notation \( X^{(n)} \) to indicate the \( n-th \) derivative.
 
 ** Population or sample data
 
@@ -367,7 +367,7 @@ We now consider what happens if the above assumptions are violated. Fundamentall
   This means that we have multicollinearity. The matrix \( (X'X)^{-1} \) is not full rank and so cannot be inverted. In practice, this often happens when two or more features are almost linear combinations of each other. Consider for example a regression where only people aged 22 and under are considered. If most children start schooling at age 3, and most children are in education until they turn 18 years old, then their age and the total number of years they've spent in school are very closely related. \\
   This means that \( (X'X) \)'s determinant will be numerically unstable, leading to wide variation in the estimation of its inverse. As a result the OLS estimator will be very susceptible to small changes. A lot of modern python or R libraries imlpement checks and might or might not give you a warning if it detects a potential multicollinearity issue.
 **** *A2 violations*
-  If the model is fundamentally not linear, then approximating it with a linear equation won't work. However, maybe you know that your model is not linear, but what you want is to capture a specific part of your signal that is itself linear. In that case A2 isn't so restrictive. Moreover, consider a model where you believe that \( y = \beta_0 \times x_1^{\beta_{1}} \times x_2^{\beta_{1}} \times \varepsilon \). You can easily linearilize such a model by taking logs: \( \log(y) = \log(\beta_0) + \beta_1 \log(x_1) + \beta_2 \log(x_2) + \log(\varepsilon) \). \\
+  If the model is fundamentally not linear, then approximating it with a linear equation won't work. However, maybe you know that your model is not linear, but what you want is to capture a specific part of your signal that is itself linear. In that case A2 isn't so restrictive. Moreover, consider a model where you believe that \( y = \beta_0 \times x_1^{\beta_{1}} \times x_2^{\beta_{1}} \times \varepsilon \). You can easily linearize such a model by taking logs: \( \log(y) = \log(\beta_0) + \beta_1 \log(x_1) + \beta_2 \log(x_2) + \log(\varepsilon) \). \\
   We look at more possible model transformations in the next part.
 **** *A3 violations*
   If the errors and the features are correlated, then either you can include more confounders in your features, or you can try to adjust for it by giving your errors some variability based on your features (see White standard errors or other heteroskedastic-resistant standard errors). \\
@@ -383,7 +383,7 @@ Now that we have a strong understanding of how OLS works, let's discuss ways to 
 
 **** *Polynomial transformations:*
 
-As mentionned briefly above, you can modify your data directly. Instead of regressing \( y \) on \( X \), you regress \( y \) on \( X^r \) where \( r \in \mathbb(R) \). This is a good way of allowing a type of non-linear relationship between \( y \) and \( X \). Note that the fundamental equation is still linear however: \( y = X^r \beta + \varepsilon \)n. Note also that not all features need to be exponentiated. Some features might have a fully linear component while others have one or several exponentiated components.
+As mentioned briefly above, you can modify your data directly. Instead of regressing \( y \) on \( X \), you regress \( y \) on \( X^r \) where \( r \in \mathbb(R) \). This is a good way of allowing a type of non-linear relationship between \( y \) and \( X \). Note that the fundamental equation is still linear however: \( y = X^r \beta + \varepsilon \)n. Note also that not all features need to be exponentiated. Some features might have a fully linear component while others have one or several exponentiated components.
 
 **** *Logarithmic/exponential transformations:*
 
@@ -408,7 +408,7 @@ And compare that to the classic regression anatomy formula in scalar form:
 \end{equation*}
 
 Note how the \( \alpha \) depends on individuals while the \( \delta \) depends on time, and the feature and output depend on both. Sometimes our data exhibits a time trend, for example population increasing over time. Sometimes it also exhibits individual effects, for example this region is fundamentally slightly different from this other region. We can capture these time and space fixed effects with these added constants. \\
-Now our estimate for \( \beta \) won't include any of the time or space effects. For instance, if we are trying to predict our monthly sales for all our stores, across several years, based on some weather data, then including \( \alpha \) and \( \delta \) will get rid of the time trends and of the idiosyncracies of where the stores are located. In that case, \( \beta \) will reflect the impact of the weather omitting the time and space trends. So if we care about which store site is most affected by the weather, this will be reflected in \( \alpha \). If we care about which month impacts sales the most, this will be reflected in \( \delta \).
+Now our estimate for \( \beta \) won't include any of the time or space effects. For instance, if we are trying to predict our monthly sales for all our stores, across several years, based on some weather data, then including \( \alpha \) and \( \delta \) will get rid of the time trends and of the idiosyncrasies of where the stores are located. In that case, \( \beta \) will reflect the impact of the weather omitting the time and space trends. So if we care about which store site is most affected by the weather, this will be reflected in \( \alpha \). If we care about which month impacts sales the most, this will be reflected in \( \delta \).
 
 **** *Generalized Least Squares:*
 
@@ -445,7 +445,7 @@ Where \( I \) is the identity matrix of size \( k \times k \) and choosing \( \l
 
 **** *Lasso (least absolute shrinkage and selection operator) regression:*
 
-Lasso was invented to improve OLS's out-of-sample prediction accuracy and interpretability by limiting the overall size of the estimator. This time the OLS optimisation problem is modified to constrain the estimator based on its \( L1 \) norm:
+Lasso was invented to improve OLS's out-of-sample prediction accuracy and interpret-ability by limiting the overall size of the estimator. This time the OLS optimization problem is modified to constrain the estimator based on its \( L1 \) norm:
 
 \begin{equation*}
   \arg\min \limits_\beta (y - X \beta)'(y - X \beta) + \lambda ||\beta||_1
@@ -460,7 +460,7 @@ Solving for the above yields the Lasso estimator:
 
 Where \( \hat{\beta}_{j}^{OLS} \) is the previously defined OLS estimator, \( N \) is the number of data points, \( \lambda \) is the Lasso parameter. \\
 In practice, the Lasso regression ends up turning "on" or "off" different features by setting their \( \beta \) coefficients to 0 based on which features have the highest explanatory power. This is immediately visible from the formula, which yields a 0 if the size of the lambda parameter cannot be compensated for by the size of the \( \beta \) coefficient. \\
-Beyond the formula, consider a simple two-feature case where feature 1 is very highly correlated with our outcome variable while feature 2 is only slightly correlated with it. If we want the best fit, then we want \( \beta_{1} \) to be unconstrained as much as possible, and so if we choose the Lasso paramater such that \( \beta_{1} + \beta_{2} < \lambda \) and \( \beta_{2} < \lambda \) then setting \( \beta_{2} \) to \( 0 \) "first" and leaving \( \beta_{1} \) as untouched as possible should yield a better model. \\
+Beyond the formula, consider a simple two-feature case where feature 1 is very highly correlated with our outcome variable while feature 2 is only slightly correlated with it. If we want the best fit, then we want \( \beta_{1} \) to be unconstrained as much as possible, and so if we choose the Lasso parameter such that \( \beta_{1} + \beta_{2} < \lambda \) and \( \beta_{2} < \lambda \) then setting \( \beta_{2} \) to \( 0 \) "first" and leaving \( \beta_{1} \) as untouched as possible should yield a better model. \\
 The reason why this line of argument works for Lasso and not for Ridge is because Lasso has "kinks" while Ridge is smooth. In other words, the trade-off for Lasso is linear while for Ridge it is quadratic, implying that there is a "middle ground". Geometrically, [[https://upload.wikimedia.org/wikipedia/commons/f/f8/L1_and_L2_balls.svg][this]] graph from wikipedia shows off nicely how the Lasso constraint region leads to kinks.
 
 **** *Elastic Net:*
@@ -471,7 +471,7 @@ Ridge and Lasso are closely tied approaches, one being L2 reg and the other L1 r
   \arg\min \limits_\beta (y - X \beta)'(y - X \beta) + \lambda_2 ||\beta||_2 + \lambda_1 ||\beta||_1
 \end{equation*}
 
-The use of both constrainsts can make predictions much worse if not properly calibrated, so there exists a variety of heuristics to guide selecting the right \( \lambda \) parameters through cross-validation.
+The use of both constraints can make predictions much worse if not properly calibrated, so there exists a variety of heuristics to guide selecting the right \( \lambda \) parameters through cross-validation.
 
 **** *Logistic (Logit) regression:*
 
@@ -482,7 +482,7 @@ We now move away from the linear assumption (A2), but this is a curve that still
   \mathbb{P}(x_i) = \frac{1}{1 + e^{-(\beta_0 + \beta_q1 x_i)}}
 \end{equation*}
 
-This function is a sigmoid, and is bounded by 0 on the left and 1 on the right. As a result, it is nicely interpretable as the probability of an event given some inputs. \\
+This function is a sigmoid, and is bounded by 0 on the left and 1 on the right. As a result, it is nicely interpret-able as the probability of an event given some inputs. \\
 To transform the Logit regression into a classification model, choose a threshold \( t \) such that if \( \mathbb{P}(x_i) > t \) the class is 1 and otherwise it is 0. Note that the most common method of parameter estimation here is maximum likelihood estimated (MLE), using the logit's log-likelihood and solving when the derivatives are 0.
 
 **** *Probit (probability unit) regression:*
@@ -501,7 +501,7 @@ Rather than its own model, this is a generalization of OLS that covers all of th
 Here we define \( g \) as the /link function/ and it can be the usual linear form as seen in A2, or it can be a probit, a polynomial transformation, etc ... \\
 
 
-*Note -- \( L1 \) and \( L2 \) norm:* Generally speaking, any measure that satistfies a few properties can be considered a distance in an arbitrary vector space. Such a measure of distance is called a norm. These norms are often referred to as the \( L0 \), \( L1 \), \( L2 \), ... norm. The notation used for the norm is \( ||x||_n \) where \( n \) is the dimension of the norm. The most common norms you'll encounter are \( L1 \) and \( L2 \), where \( L1 \) is the absolute value and \( L2 \) is the Euclidian distance (notice the throwback to the different ways of defining the line of best fit!). Formally, with \( *x* \) a vector with elements \( x_i, i = 1, 2, ..., n \) and with \( |\cdot| \) the absolute value operator: \( L1: ||\textbf{x}||_1 = \sum_{i=1}^{n} |x_i| \) and \( L2: ||\textbf{x}||_2 = \sqrt{\sum_{i=1}^{n} x_i^2} \). \\
+*Note -- \( L1 \) and \( L2 \) norm:* Generally speaking, any measure that satisfies a few properties can be considered a distance in an arbitrary vector space. Such a measure of distance is called a norm. These norms are often referred to as the \( L0 \), \( L1 \), \( L2 \), ... norm. The notation used for the norm is \( ||x||_n \) where \( n \) is the dimension of the norm. The most common norms you'll encounter are \( L1 \) and \( L2 \), where \( L1 \) is the absolute value and \( L2 \) is the Euclidian distance (notice the throwback to the different ways of defining the line of best fit!). Formally, with \( *x* \) a vector with elements \( x_i, i = 1, 2, ..., n \) and with \( |\cdot| \) the absolute value operator: \( L1: ||\textbf{x}||_1 = \sum_{i=1}^{n} |x_i| \) and \( L2: ||\textbf{x}||_2 = \sqrt{\sum_{i=1}^{n} x_i^2} \). \\
 
 *Note -- Non-Econometrics regression methods:* So far we have focused quite extensively on methods that come from the field of Econometrics. However as I emphasize throughout the guide, a lot of what I explained is still useful for other methods. There are two in particular that I want to highlight: Random Forests (RF) and Support Vector Machine (SVM) Regression.\\
 These two forecasting methods are the bread and butter of Machine Learning forecasting. In particular SVMs were all the rage until Deep Neural Nets became computationally available. Both methods were born out of Computer Science, and so are fundamentally built with computation in mind. In particular, the XGBoost implementation of RF is exceptionally fast to train and its wide variety of hyper-parameters lends itself really well to reducing overfitting. Kaggle, a website dedicated to data science competitions, reports that most competition winners use the XGBoost implementation of RF. In fact, an equally long guide could be written just about tuning an optimal XGBoost model. \\
@@ -574,7 +574,7 @@ Random Forests are really powerful tools, and if there is an uncovered topic in 
 
 * Time series forecasting
 
-Time series forecasting is special because the data is intrisincally serially correlated. Whether it be for a classification problem or a regression problem, serial correlation breaks a lot of the assumptions we have about the data. Most importantly, the iid assumption, or A4 from the assumptions section above, is now broken. This lack of independence makes time series forecasting famously difficult. \\
+Time series forecasting is special because the data is intrinsically serially correlated. Whether it be for a classification problem or a regression problem, serial correlation breaks a lot of the assumptions we have about the data. Most importantly, the iid assumption, or A4 from the assumptions section above, is now broken. This lack of independence makes time series forecasting famously difficult. \\
 In this section we talk mostly about regression modeling once again. However other methods exist, like fitting stochastic processes like Hidden Markov Models.
 
 ** The problem with time
@@ -661,7 +661,7 @@ This concept of unit root is linked to another concept: *stationarity*.
 
 ** What is stationarity?
 
-In a statistics context, stationarity is the idea that a given probability distribution is constant over time. Implicitly, this is partly what *A4* gives us for OLS since it forces the standard deviation to be constant over time, regarldess of cross-correlation effects. Notationally, there is no \( t \) component on the standard deviation. \\
+In a statistics context, stationarity is the idea that a given probability distribution is constant over time. Implicitly, this is partly what *A4* gives us for OLS since it forces the standard deviation to be constant over time, regardless of cross-correlation effects. Notationally, there is no \( t \) component on the standard deviation. \\
 There can be many reasons for why your data exhibits non-stationary behavior: a change in market regulation means the data-generating process fundamentally changed, technology improved and so trading methods changed, the type of fuel used changed, etc. \\
 In particular, if you believe there is a unit root in your data, it will exhibit non-stationary behavior. This is very bad, because your regression estimator will almost invariably fit to noise instead of signal. Formally speaking, stationarity is defined as follows: \\
 Let \( {X_t} \) be a stochastic process and \( F_X(x_{t_{1}}, ..., x_{t{_n}}) \) be the cumulative distribution function of the unconditional joint distribution of \( {X_t} \). Then \( {X_t} \) is said to be strongly stationary if:
@@ -681,7 +681,7 @@ This is very similar to the previous equality, except we allow for the full dist
 
 ** Testing for stationarity
 
-The main ways in which we test for stationarity use hypothesis testing. There is a refresher on hypothesis testing in the next scction.
+The main ways in which we test for stationarity use hypothesis testing. There is a refresher on hypothesis testing in the next section.
 
 **** *Autocorrelation Function (ACF), Partial Autocorrelation Function (PCF/PACF) plots*
 
@@ -785,7 +785,7 @@ There are a lot of heuristics and methods guiding how to write your own error fu
 
 ** On the importance of train-test splits and cross-validation
 
-One of the most useful techniques from Machine Learning is the train-test split. Like many other ML methods, its focus is on improving out-of-sample performance by reducing overfitting. The core idea is to separate your data into two parts. Using your training data, you fit your model the way you usually would. But measuring the performance of your model on your training set could easily lead to over-estimating your goddness of fit by fitting too closely to that specific dataset. Therefore, we measure the validity of the model on a separate, not-before-seen, testing data set. The training data is biased one way or another, and in fact the out-of-sample data is also biased one way or another. The reason why the out-of-sample bias is /better/ is because a priori, not having trained on it, our model is equally likely to perform better or worse on it. That bias is much easier to live with than overfitting bias. \\
+One of the most useful techniques from Machine Learning is the train-test split. Like many other ML methods, its focus is on improving out-of-sample performance by reducing overfitting. The core idea is to separate your data into two parts. Using your training data, you fit your model the way you usually would. But measuring the performance of your model on your training set could easily lead to over-estimating your goodness of fit by fitting too closely to that specific dataset. Therefore, we measure the validity of the model on a separate, not-before-seen, testing data set. The training data is biased one way or another, and in fact the out-of-sample data is also biased one way or another. The reason why the out-of-sample bias is /better/ is because a priori, not having trained on it, our model is equally likely to perform better or worse on it. That bias is much easier to live with than overfitting bias. \\
 
 You can also divide your data into more chunks, usually a train, a validate, and a test set (note the terms validate and test are used interchangeably across different textbooks). That way you train your model on your train set, you pick the best (hyper)parameters for that model on your validate set, and you pick the best overall model on the test set.
 Separating the data between the part we know and the part we don't know for each decision ensures that we don't overestimate how much we actually know about unknown future data. \\
@@ -794,7 +794,7 @@ To measure a model's performance, more data is always better because it gives yo
 
 Cross-validation aims to solve the problem of the test set being too small to gain good confidence. It works by randomly selecting data points in any order to form a subset of your data. That subset is then split into train and test and your model is fitted and evaluated. This process is repeated many times, sometimes hundreds of times for larger datasets. Each of these subset is called a fold. Then you use the average of your many test measures of fit across all your folds as your overall measure of fit. This method effectively resamples your data to maximally exploit its stochastic nature, as if you were drawing samples from the population many times. \\
 
-Although cross-validation is very powerful to get a better (i.e. less biased, less overfitted) measure of fit, you must exercise care when using it. If you measure on the same testing set again and again, in the end the test set becomes part of your training data and is no longer out-of-sample. Therefore, if you resample your data so many times that you train and test over your entire data set hundreds of itmes, your cross-validation approach will actually result in overfitting. \\
+Although cross-validation is very powerful to get a better (i.e. less biased, less over-fitted) measure of fit, you must exercise care when using it. If you measure on the same testing set again and again, in the end the test set becomes part of your training data and is no longer out-of-sample. Therefore, if you resample your data so many times that you train and test over your entire data set hundreds of times, your cross-validation approach will actually result in overfitting. \\
 
 Of course, everything we just discussed becomes even harder when applying it to time series.
 
@@ -818,7 +818,7 @@ Let's offer a concrete example: let's assume you train your model on your data f
 + _Approach 1_: move only by the amount that is in your test set. That means that your next fold will train on index 20 to 120, validate on 121 to 140, and test on 141 to 160. You almost never want your test sets to overlap. If they do, you are effectively counting the performance of your model on the same data twice, and so now that piece of data is disproportionately represented in your final goodness of fit.\\
 + _Approach 2_: move by the entire block, so that you don't even train on part of the same data at all. This is to avoid issues where an outlier event in that dataset gets fitted many times. Using our above examples, the second fold would train on indeces 141 to 241, then validate on 242 to 261, and test on 262 to 281. Of course, this means we have fewer folds available to measure how well our model is performing.\\
 + _Approach 3_: move by an amount between the two extremes above. Using the above example, it's possible for the second fold to reuse half of the training set while still making sure that the new test set is completely new. This can be a good compromise when there isn't a lot of available data. Using the same example, let's move by half the training set, knowing that that still covers the testing set and then some. We train on 50 to 150, we validate on 151 to 170, and we test on 171 to 190. \\
-+ _How often to retrain_: Retraining is intricately linked to how you update your train-validate-test split. In the above examples, I implicitly assumed that your retrained for each testing phase. However sometimes this is not computationally feasable, either because the model is too costly to train or because of some data restrictions. Yet we might still want to validate and test in blocks. Testing for model decay becomes very important, and there are ways to test for it. The basic idea behind measuring model decay is to look at the pattern of the model's performance. If the performance drops off very badly every time three test sets down the line, you know that you will need to retrain your model that often, or else live with worse predictions for a while.
++ _How often to retrain_: Retraining is intricately linked to how you update your train-validate-test split. In the above examples, I implicitly assumed that your retrained for each testing phase. However sometimes this is not computationally feasible, either because the model is too costly to train or because of some data restrictions. Yet we might still want to validate and test in blocks. Testing for model decay becomes very important, and there are ways to test for it. The basic idea behind measuring model decay is to look at the pattern of the model's performance. If the performance drops off very badly every time three test sets down the line, you know that you will need to retrain your model that often, or else live with worse predictions for a while.
 
 ** Hypothesis testing
 
@@ -885,8 +885,8 @@ For even more details, the following [[https://web.archive.org/web/2015043020030
 The table below organizes methods by type:
 
 |              | Regression                                                                                                                             | Classification                               |
-| Supervised   | OLS, Lasso, Ridge, Random Forest, Seasonal Decomposition, Generalized Least Squares, Generalized Linear Models, Bayesian Networks, Instrumental Variables Estimation, ANOVA, Kalman filtering | Logitm Probit, LDA, SVM, K-nearest-neighbors |
-| Unsupervised | Principle Component Analysis, Markov Autoregression,                                                                                   | K-clsuters, Hiddem Markov Models             |
+| Supervised   | OLS, Lasso, Ridge, Random Forest, Seasonal Decomposition, Generalized Least Squares, Generalized Linear Models, Bayesian Networks, Instrumental Variables Estimation, ANOVA, Kalman filtering | Logit, Probit, LDA, SVM, K-nearest-neighbors |
+| Unsupervised | Principle Component Analysis, Markov Autoregression,                                                                                   | K-clsuters, Hidden Markov Models             |
 
 
 * References

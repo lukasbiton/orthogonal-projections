@@ -69,7 +69,7 @@ Here are some things I've enjoyed so far:
 
 *** _Advances in Financial Machine Learning_
 
-This book has a lot of nice advanced topics that I didn't see mentionned anywhere else. Things like how to store your data, data transformations to get a present discounted value of your assets across wide asset classes, how to use information theory to derive useful trading signals, how to avoid data mining...
+This book has a lot of nice advanced topics that I didn't see mentioned anywhere else. Things like how to store your data, data transformations to get a present discounted value of your assets across wide asset classes, how to use information theory to derive useful trading signals, how to avoid data mining...
 It's presented so plainly and obviously that I felt almost dumb for not thinking of the content of the books by myself before.
 The code is written very plainly using mostly numpy and statsmodels, but in my (partial) experience works.
 

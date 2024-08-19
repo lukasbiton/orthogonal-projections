@@ -45,7 +45,7 @@ The way I approached it was to learn the movement keys first (C-n, C-p, C-f, C-b
 ** Some of my favorite features
 In no particular order, some of my favorite things:
 + Magit
-+ Rectangle selection (especially for quickly editing .csv in csv-mode files)
++ Rectangle selection (especially for quickly editing .csv files in csv-mode)
 + Playing with colors
 + Easy to jump around code between dired and the text editor
 + The buffer system and organising your screen
