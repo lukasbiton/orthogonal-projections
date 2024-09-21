@@ -212,7 +212,7 @@ Furthermore keep in mind that the fundamental goal of linear regression is to re
 Looking at the image below with a linear scatter: where would you put the line of best fit?
 
 #+ATTR_HTML: :align center
-[[./scatter.png]]
+[[./forecasting_guide_plots/scatter.png]]
 
 If we draw a straight line through these points, then the distance between the points and the line is our error. Ideally we would want the total error, i.e. the sum of those distances, to be minimized. This idea of minimising a sum of error terms is key to most ML methods.
 
@@ -221,22 +221,22 @@ Visually, that error can be represented by line segments that start at our data 
 The segments could intersect with the line of best fit perpendicularly:
 
 #+ATTR_HTML: :align center
-[[./scatter_orthogonal.png]]
+[[./forecasting_guide_plots/scatter_orthogonal.png]]
 
 Or the segments could all be parallel to one of the axes:
 
 #+ATTR_HTML: :align center
-[[./scatter_parallel.png]]
+[[./forecasting_guide_plots/scatter_parallel.png]]
 
 Gauss and Legendre's insight was to draw not line segments, but squares, and to find the line that minimizes those squares:
 
 #+ATTR_HTML: :align center
-[[./scatter_squares.png]]
+[[./forecasting_guide_plots/scatter_squares.png]]
 
 Look at how different those lines look like:
 
 #+ATTR_HTML: :align center
-[[./scatter_all_lines.png]]
+[[./forecasting_guide_plots/scatter_all_lines.png]]
 
 Fundamentally, there are two considerations:
 1. Which direction the error lines are pointing - we saw vertical and perpendicular, but horizontal is also possible. A vertical line (i.e. parallel to the y-axis) implies that we only consider errors for the \( X \) variables, while a horizontal line (i.e. parallel to the x-axis) implies that we only consider errors for \( y \) variable. A perpendicular line implies that we consider the errors for both the \( X \) and \( y \) variables. Whether the line segment is vertical, horizontal, or perpendicular changes the /regression anatomy formula/.
@@ -759,7 +759,7 @@ When the changes in your data are small, then the change can be approximated by 
 
 See below for examples of all these data transformations. For this example data, the graphs for first differences, division of features, changes over time, and log differences exhibit a classic stationarity shape. \\
 
-[[./transformations.png]]
+[[./forecasting_guide_plots/transformations.png]]
 
 *Note -- the link between FD, Feature Division, Change, and log:* Remember that in general: \( \log(a) - \log(b) = \log(\frac{a}{b}) \). This should help you see how the listed transformations are all actually linked.
 

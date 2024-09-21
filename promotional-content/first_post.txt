@@ -1,0 +1,12 @@
+Hi everyone,
+
+I started a blog called Orthogonal Projections and I'm posting content at the intersection of mathematics, computing, and software engineering there. If you're interested, I already have a guide to learning some of the mathematics behind forecasting methods. The guide is aimed at people with some maths background, but no formal training in forecasting. The goal is to help build a mathematically solid intuition for solving forecasting problems.
+
+If you like what you're seeing, coming up next are topics such as how to measure the impact of stochastic inputs to an optimisation problem or comparing Frequentist and Bayesian methods.
+
+If you want to join my mailing list, feel free to say hi at orthogonal.projections@proton.me. In general, I'd love to get feedback on what I wrote and to spark a cool conversation.
+
+
+Hi,
+I made a post just now to share a blog post I wrote and hopefully spark some interesting conversations. I made a reddit account specifically for this so it's a recent one. Would it be possible to get my post approved so others can see it?
+Best,

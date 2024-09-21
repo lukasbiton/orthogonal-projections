@@ -20,3 +20,4 @@ If you want to be put on a mailing list and receive my new articles directly in 
 + [[./misc-software.org][Some software tools I like]]
 + [[./forecasting-guide.org][Forecasting Guide]]
 + [[./forecasting-guide-making-of.org][Forecasting Guide - making of]]
++ [[./stochastic-lp.org][Stochastic inputs for optimisation problems]]

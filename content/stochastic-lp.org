@@ -1,0 +1,151 @@
+#+title: Stochastic inputs for optimisation problems
+#+author: LB
+#+version: 2
+
+[[./index.org][Return to index]]
+
+* Introduction
+
+I'm fairly new to the topic of linear optimisation (or linear programming as the cool kids say), and coming from statistics my immediate thought was: what happens if I throw a random variable in there? \\
+There is such a thing as [[https://en.wikipedia.org/wiki/Stochastic_programming][stochastic programming]], but if my wikipedia reading skills don´t betray me, it amounts to maximising a function which contains an expected value operator, which isn't quite what I'm interested in. \\
+Instead, I want to transfer the uncertainty I have about my inputs into my outputs more directly. In a Bayesian sense, if I have a distribution (maybe an empirical distribution obtained via resampling, maybe a distribution obtained via MCMC methods) for my input data, can I get a distribution for my output? And this output distribution, is it for my variables or for the value of my objective?
+
+In this post, I'll generate some data from some known distributions, feed it through a variety of optimisation programs, and see what comes out!
+
+* Speedrun
+
+[[https://github.com/lukasbiton/distributions-through-lp][Here's]] the github repo with the code. \\
+MILPs perform very non-linear operations, like plane cutting. However, they have nice stability properties for the value of the objective function. Passing a distribution of inputs through an MILP reveals this as the variables aren't stable but the objective function's output is, which we observe with some graphs. However, there is no such stability for the variables of the problem. In fact, the variables can be "maximally" different for very similar values of the objective function. \\
+Using the MCMC approach detailed here, we can obtain distributional properties of our outputs.
+
+* Some vocabulary
+
+Just so we're all on the same page, I will use the following conventions:
++ Program: to be part of the cool kids, in this blog post 'program' will mean 'optimisation program' (as opposed to computer program)
++ Modelling language: the library that I write the model in (in this exercise, I use [[https://www.cvxpy.org/][cvxpy]] with its default solver)
++ Parameters / data: to refer to everything the program takes as given
++ Variables: to refer to the decision variables the program has control over
++ Constraints: to refer to the program's constraints
++ Objective: to refer to the program's objective function to maximize or minimize
+
+* Choice of modelling language and optimiser
+
+In my work, I've used [[https://pyomo.readthedocs.io/en/stable/][pyomo]] with [[https://highs.dev/][HiGHS]] extensively, so I wanted to try something different this time around. I played around with [[https://linopy.readthedocs.io/en/latest/][linopy]] which is supposedly faster than pyomo at building programs (i.e. the semantic resolution is better). However, I found both linopy and cvxpy to be using syntax /too close/ to the maths. The object-orientedness of pyomo makes it quite expressive. In particular, I quite like how you can build abstract models or concrete models. This means that the definition of your variables and parameters can be made from their initialisation. Moreover, pyomo supports basically every solver under the Sun.
+
+* Starting simple
+
+Let's start very simple by building a model where we the objective function adds normally distributed normal variables. Two normals added together form a new normal variable. Easy enough:
+
+\begin{alignat*}{3}
+  & \max_{a, b} x_1 \times a + x_2 \times b \\
+  & \text{s.t.} \\
+  & a + b \leq 2 & a, b \leq 1 \\
+  & a, b \in \mathbb{R} & a, b \geq 0 \\
+\end{alignat*}
+
+Note that the parameters \( x_1 \) and \( x_2 \) are assumed to always be positive.
+
+In code, using cvxpy as the modelling language, it looks like this:
+
+#+BEGIN_SRC <python>
+  import cvxpy as cp
+
+  a = cp.Variable()
+  b = cp.Variable()
+
+  constraints = [
+      a + b <= constraint_bound,
+      a <= 1,
+      b <= 1,
+      a >= 0,
+      b >= 0,
+  ]
+  objective = param_1*a + param_2*b
+
+  problem = cp.Problem(cp.Maximize(objective), constraints)
+  problem.solve()
+#+END_SRC
+
+By setting \( \verb|constraint_bound| \) to values greater than or smaller than 2, we can make the constraint either slack or active. In the slack case, we would expect the optimiser to set the values of \( a \) and \( b \) maximally to 1 (given that the parameters are always positive). In the case where the constraint is active, let's say when \( \text{constraint_bound} \leq 0.5 \), if,  without loss of generality, \( x_1 \) is greater, then \( a \) will be set to the level of the constraint, while \( b \) will be set to \( 0 \). \\
+Now if we generate many different values \( x_1 \) and \( x_2 \) from known normal distributions, we can generate many different values for the objective function of this problem. This value is itself a random variable, \( Z \), since it is a combination of random variables, \( X_1 \) and \( X_2 \). In the slack case, we would expect this random variable to approach a sum of normals, but in the the constrained case, sometimes this random variable will come from the distribution of \( X_1 \) and sometimes from the distribution of \( X_2 \). Therefore in the constrained case we expect \( Z \) to actually follow a bi-modal distribution made up of two different normal distributions.
+
+We sample the parameter values from two normal distributions: \( X_1 \sim \mathbb{N}(100, 5) \) and \( X_2 \sim \mathbb{N}(100, 50) \), and we solve this program for two values of \( \verb|constraint_bound| \): \( 0.5 \) and \( 2 \). Let's put together some code to visualise what's going on. \\
+
+We start by setting up our input parameters as well as initializing some lists to track our results:
+
+#+BEGIN_SRC <python>
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import scipy.stats as stats
+
+  test_size = 100
+
+  mu_1 = 100
+  sigma_1 = 5
+  mu_2 = 100
+  sigma_2 = 50
+  np.random.seed(0)
+  x1s = stats.norm.rvs(mu_1, sigma_1, size = test_size)
+  x2s = stats.norm.rvs(mu_2, sigma_2, size = test_size)
+#+END_SRC
+
+Then we loop for each pair \( (x_1, x_2) \), solving the simple program each time.
+
+#+BEGIN_SRC <python>
+  for i in range(test_size):
+      # Generate random variables
+      x1 = x1s[i]
+      x2 = x2s[i]
+      results_degen.append(utils.sum_obj_model(x1, x2, 2)[0])
+      results_cons.append(utils.sum_obj_model(x1, x2, 0.5)[0])
+#+END_SRC
+
+And finally we plot our results.
+
+#+BEGIN_SRC <python>
+  fig, ax = plt.subplots(1,1, figsize=FIG_SIZE)
+  ax.hist(results_degen, bins=30, alpha=0.5, color=COLOR_DICT[1])
+#+END_SRC
+
+Besides plotting the distribution of the value of the objective function, we can also plot what the decision variables look like.
+
+#+BEGIN_SRC <python>
+  fig, axes = plt.subplots(1, 2, figsize=FIG_SIZE)
+  axes[0].scatter(range(test_size), slack_a, color=COLOR_DICT[2])
+  axes[1].scatter(range(test_size), slack_b, color=COLOR_DICT[2])
+#+END_SRC
+
+** Slack simple problem
+
+Let's start by looking at the outputs from the slack experiment. This first graph presents the distribution of the value of the objective function over many iterations:
+
+[[./stochastic_lp_plots/Degenerate Simple LP.svg]]
+
+We can clearly that this looks like a normal distribution. Theoretically, we know:
+
+\begin{alignat*}{0}
+  & \text{if} \hspace{2mm} X_1 \sim \mathcal{N}(\mu_1, \sigma_1^2) \\
+  & \text{and} \hspace{2mm} X_2 \sim \mathcal{N}(\mu_2, \sigma_2^2) \\
+  & \text{then} \hspace{2mm}  Z = X_1 + X_2 \sim \mathcal{N}(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2)
+\end{alignat*}
+
+We can test for this using a [[https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test][Kolmogorov-Smirnov test]]:
+
+#+BEGIN_SRC <python>
+  import scipy.stats as stats
+  
+  test_slack = stats.norm.rvs(mu_1 + mu_2, np.sqrt(sigma_1**2 + sigma_2**2), size = test_size)
+  print(stats.kstest(test_slack, results_slack))
+#+END_SRC
+
+This yields a p-value of 0.23, so we cannot reject the null hypothesis that these two random samples were drawn from the same distribution. As we all know, hypothesis tests can't confirm the null, but between the plot and this result we can be fairly convinced that our theoretical result is correct.
+
+Looking at the variables yields similarly interesting results:
+
+[[./stochastic_lp_plots/Degenerate LP Variables.svg]]
+
+Most values for \( a \) are 0 (or close enough to 0, up to some numerical instability), while most values for \( b \) are 1. This is actually in line with what we would expect since \( X_2 \)'s standard deviation probably means \( x_2 \geq x_1 \) most of the time. In fact, it's remarkable we still get a nice-looking sum of normal variables effect with how small the values for \( a \) are.
+
+** Constrained simple problem
+
+Let's now look at the results when the main constraint is active. First, we take a look at the distribution of the value of the objective function.
